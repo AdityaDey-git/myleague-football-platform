@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>myLeague</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LOGIN / LANDING PAGE -->
+  <div id="login" class="page active">
+    <div class="box center">
+      <h1 class="accent">myLeague Setup</h1>
+      <p>Platform Features:</p>
+      <ul class="feature-list">
+        <li>Live Points Table</li>
+        <li>Team Registration</li>
+        <li>11 + 5 Squad Management</li>
+        <li>Venue Directory</li>
+        <li>Match Scheduling and Scoring</li>
+      </ul>
+
+      <input type="text" id="orgName" placeholder="Organisation Name (e.g. LPU Sports)">
+      <input type="text" id="tourneyName" placeholder="Tournament Name (e.g. Hostel Cup)">
+      <input type="email" id="tourneyEmail" placeholder="Organiser Email (e.g. admin@lpu.in)">
+      <input type="text" id="contactNum" placeholder="Organiser Phone (e.g. 9876543210)">
+      
+      <button onclick="login()" class="full-btn">Start Dashboard</button>
+
+      <div class="contact-footer">
+        <p><strong>myLeague Helpdesk:</strong></p>
+        <p>Phone: +91 9213623032 | Email: myleague.lpu@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINGLE-PAGE SCROLLABLE DASHBOARD -->
+  <div id="dash" class="page">
+    
+    <!-- TOP HEADER BAR -->
+    <div class="topbar">
+      <div>
+        <h1 class="logo-title">myLeague</h1>
+        <span id="dashTitle" class="sub-title">Tournament</span>
+      </div>
+      <div class="topbar-right">
+        <span>Support: +91 9213623032 | myleague.lpu@gmail.com</span>
+        <button class="exit-btn" onclick="logout()">Exit Dashboard</button>
+      </div>
+    </div>
+    
+    <!-- MAIN SINGLE-PAGE CONTENT -->
+    <div class="container">
+
+      <!-- 1. TOURNAMENT PROFILE -->
+      <div class="section-block">
+        <h2 class="accent">1. Tournament Profile</h2>
+        <div class="box">
+          <p><strong>Platform:</strong> myLeague</p>
+          <p><strong>Organisation:</strong> <span id="profOrg"></span></p>
+          <p><strong>Tournament Name:</strong> <span id="profName"></span></p>
+          <p><strong>Organiser Email:</strong> <span id="profEmail"></span></p>
+          <p><strong>Organiser Contact:</strong> <span id="profContact"></span></p>
+          <p><strong>Sport:</strong> Football</p>
+        </div>
+      </div>
+
+      <!-- 2. STANDINGS / POINTS TABLE -->
+      <div class="section-block">
+        <h2 class="accent">2. Standings & Points Table</h2>
+        <div class="box">
+          <table id="ptsTable"></table>
+        </div>
+      </div>
+
+      <!-- 3. TEAMS REGISTRATION -->
+      <div class="section-block">
+        <h2 class="accent">3. Teams</h2>
+        <div class="box form-row">
+          <input type="text" id="tName" placeholder="Team Name">
+          <input type="text" id="tMgr" placeholder="Manager Name">
+          <button onclick="addTeam()">Add Team</button>
+        </div>
+        <div id="teamList"></div>
+      </div>
+
+      <!-- 4. PLAYER SQUADS -->
+      <div class="section-block">
+        <h2 class="accent">4. Player Squads</h2>
+        <div class="box form-row">
+          <select id="pTeam"></select>
+          <input type="text" id="pName" placeholder="Player Name">
+          <select id="pPos">
+            <option value="Starter">Starter (Max 11)</option>
+            <option value="Sub">Substitute (Max 5)</option>
+          </select>
+          <button onclick="addPlayer()">Add Player</button>
+        </div>
+        <div id="squadList"></div>
+      </div>
+
+      <!-- 5. VENUES -->
+      <div class="section-block">
+        <h2 class="accent">5. Venues</h2>
+        <div class="box form-row">
+          <input type="text" id="vName" placeholder="Stadium Name">
+          <input type="text" id="vCity" placeholder="City">
+          <input type="number" id="vCap" placeholder="Seat Capacity">
+          <button onclick="addVenue()">Add Venue</button>
+        </div>
+        <div id="venueList"></div>
+      </div>
+
+      <!-- 6. MATCHES & FIXTURES -->
+      <div class="section-block">
+        <h2 class="accent">6. Matches & Fixtures</h2>
+        <div class="box form-row">
+          <select id="mHome"></select>
+          <select id="mAway"></select>
+          <select id="mVen"></select>
+          <input type="date" id="mDate">
+          <button onclick="addMatch()">Schedule Match</button>
+        </div>
+        <div id="matchList"></div>
+      </div>
+
+      <!-- BOTTOM CONTACT FOOTER -->
+      <div class="box footer-box">
+        <h3 class="accent">Contact myLeague Support</h3>
+        <p><strong>Phone:</strong> +91 9213623032</p>
+        <p><strong>Email:</strong> myleague.lpu@gmail.com</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCORE POPUP -->
+  <div id="modal" class="modal">
+    <div class="box center">
+      <h3 id="mTitle" class="accent">Update Score</h3>
+      <input type="number" id="sHome" placeholder="Home Team Goals">
+      <input type="number" id="sAway" placeholder="Away Team Goals">
+      <button onclick="saveScore()">Save Result</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
